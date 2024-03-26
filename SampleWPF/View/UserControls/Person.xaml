@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="SampleWPF.View.UserControls.Person"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SampleWPF.View.UserControls"
+             xmlns:viewModel="clr-namespace:SampleWPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:PersonViewModel></viewModel:PersonViewModel>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="lblName" Content="Name" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top"></Label>
+
+            <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Text="{Binding ElementName=lstPerson, Path=SelectedItem.Name}">
+            </TextBox>
+            
+            <Label x:Name="lblAddress" Content="Address" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top">
+            </Label>
+            
+            <TextBox x:Name="txtAddress" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Text="{Binding ElementName=lstPerson, Path=SelectedItem.Address}">
+            </TextBox>
+
+            <Button x:Name="btnUpdate"
+                    Width="100"
+                    Height="20"
+                    HorizontalAlignment="Center"
+                    Grid.Row="2"
+                    Content="Update"
+                    Command="{Binding Path=UpdateCommand}" 
+                    CommandParameter="{Binding ElementName=lstPerson, Path=SelectedItem}">
+            </Button>
+        </Grid>
+        <ListView x:Name="lstPerson" Grid.Row="1" ItemsSource="{Binding Persons}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Address" Width="200" DisplayMemberBinding="{Binding Address}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

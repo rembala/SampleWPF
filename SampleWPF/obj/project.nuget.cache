@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z0ZngrVwaBaZuHwMwY7gJ2ZBssUoM25qqkmBOLUL/HrXThTO9J2zaHyHiJW0nOM1GOyzWelaf0XMZiT3BF5rCA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\amaslovskij\\source\\repos\\SampleWPF\\SampleWPF\\SampleWPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\amaslovskij\\.nuget\\packages\\system.speech\\8.0.0\\system.speech.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
